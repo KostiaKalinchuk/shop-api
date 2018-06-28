@@ -17,47 +17,38 @@ body {
   border-radius: 5px;
 }
 
-#cont {
-  width: 500px;
-  background: #e1e7e8;
-  margin-left: 40px;
-  padding: 20px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  display: inline-block;
-}
+/*#cont {*/
+  /*width: 500px;*/
+  /*background: #e1e7e8;*/
+  /*margin-left: 40px;*/
+  /*padding: 20px;*/
+  /*-moz-border-radius: 5px;*/
+  /*-webkit-border-radius: 5px;*/
+  /*border-radius: 5px;*/
+  /*display: inline-block;*/
+/*}*/
 
-.left {
-  width: 200px;
-  background: #e1e7e8;
-  padding: 20px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  float: left;
-}
+/*.left {*/
+  /*width: 200px;*/
+  /*background: #e1e7e8;*/
+  /*padding: 20px;*/
+  /*-moz-border-radius: 5px;*/
+  /*-webkit-border-radius: 5px;*/
+  /*border-radius: 5px;*/
+  /*float: left;*/
+/*}*/
 
-.right {
-  width: 200px;
-  background: #e1e7e8;
-  padding: 20px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-float: right;
-}
+/*.right {*/
+  /*width: 200px;*/
+  /*background: #e1e7e8;*/
+  /*padding: 20px;*/
+  /*-moz-border-radius: 5px;*/
+  /*-webkit-border-radius: 5px;*/
+  /*border-radius: 5px;*/
+/*float: right;*/
+/*}*/
 
- /*The logo and footer*/
-
-#logo {
-  display: block;
-  width: 570px;
-  padding: 0 700px 20px 0;
-  border: none;
-  border-bottom: 1px solid #00a0b0;
-  margin-bottom: 40px;
-}
+ /*The footer*/
 
 #footer {
   border-top: 1px solid #00a0b0;
@@ -143,17 +134,16 @@ h3.categoryDescription {
   text-decoration: underline;
 }
 
-
 /* "You are logged in..." header on admin pages */
 
 #adminHeader {
   width: 1250px;
-  padding: 0 10px;
   border-bottom: 1px solid #00a0b0;
-  margin: -30px 0 40px 0;
   font-size: 0.8em;
+  padding: 0 10px 20px 0;
+  border-top: 1px solid #00a0b0;
+  margin-bottom: 30px;
 }
-
 
 /* Style the form with a coloured background, along with curved corners and a drop shadow */
 

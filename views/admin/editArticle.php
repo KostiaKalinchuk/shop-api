@@ -1,5 +1,4 @@
 <?php include "views/templates/headerAdmin.php" ?>
-<?php include "views/admin/templates/header.php" ?>
 
 <h1><?php echo $results['pageTitle'] ?></h1>
 
