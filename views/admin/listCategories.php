@@ -1,5 +1,5 @@
-<?php include "views/include/headerAdmin.php" ?>
-<?php include "views/admin/include/header.php" ?>
+<?php include "views/templates/headerAdmin.php" ?>
+<?php include "views/admin/templates/header.php" ?>
 
       <h1>Список категорій</h1>
 
@@ -33,5 +33,5 @@
 
       <p><a href="admin.php?action=newCategory">Додати нову категорію</a></p>
 
-<?php include "views/include/footerAdmin.php" ?>
+<?php include "views/templates/footerAdmin.php" ?>
 

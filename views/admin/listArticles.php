@@ -1,5 +1,4 @@
-<?php include "views/include/headerAdmin.php" ?>
-<?php include "views/admin/include/header.php" ?>
+<?php include "views/templates/headerAdmin.php" ?>
 
 <h1>Список артикулів</h1>
 
@@ -99,5 +98,5 @@
 
 <p><a href="admin.php?action=newArticle">Додати артикул</a></p>
 
-<?php include "views/include/footerAdmin.php" ?>
+<?php include "views/templates/footerAdmin.php" ?>
 

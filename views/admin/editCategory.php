@@ -1,5 +1,5 @@
-<?php include "views/include/headerAdmin.php" ?>
-<?php include "views/admin/include/header.php" ?>
+<?php include "views/templates/headerAdmin.php" ?>
+<?php include "views/admin/templates/header.php" ?>
 
       <h1><?php echo $results['pageTitle']?></h1>
 
@@ -26,5 +26,5 @@
       <p><a href="admin.php?action=deleteCategory&amp;categoryId=<?php echo $results['category']->id ?>" onclick="return confirm('Видалити категорію?')">Видалити категорію</a></p>
 <?php } ?>
 
-<?php include "views/include/footerAdmin.php" ?>
+<?php include "views/templates/footerAdmin.php" ?>
 

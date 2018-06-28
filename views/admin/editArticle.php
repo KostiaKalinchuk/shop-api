@@ -1,5 +1,5 @@
-<?php include "views/include/headerAdmin.php" ?>
-<?php include "views/admin/include/header.php" ?>
+<?php include "views/templates/headerAdmin.php" ?>
+<?php include "views/admin/templates/header.php" ?>
 
 <h1><?php echo $results['pageTitle'] ?></h1>
 
@@ -118,5 +118,5 @@
           onclick="return confirm('Видаити новину?')">Видалити артикул</a></p>
 <?php } ?>
 
-<?php include "views/include/footerAdmin.php" ?>
+<?php include "views/templates/footerAdmin.php" ?>
 

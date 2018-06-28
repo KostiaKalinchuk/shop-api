@@ -1,4 +1,4 @@
-<?php include "views/include/headerAdmin.php" ?>
+<?php include "views/templates/headerAdmin.php" ?>
 
       <form action="admin.php?action=login" method="post" style="width: 50%;">
         <input type="hidden" name="login" value="true" />
@@ -27,5 +27,5 @@
 
       </form>
 
-<?php include "views/include/footerAdmin.php" ?>
+<?php include "views/templates/footerAdmin.php" ?>
 
