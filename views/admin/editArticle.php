@@ -2,7 +2,7 @@
 
 <h1><?php echo $results['pageTitle'] ?></h1>
 
-<form action="admin.php?action=<?php echo $results['formAction'] ?>" method="post">
+<form action="admin.php?action=<?php echo $results['formAction'] ?>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="articleId" value="<?php echo $results['article']->id ?>"/>
 
     <?php if (isset($results['errorMessage'])) { ?>
@@ -95,6 +95,16 @@
             <textarea name="description" id="description" required maxlength="1000"
                       style="height: 5em;"><?php echo htmlspecialchars($results['article']->description) ?></textarea>
         </li>
+
+
+
+        <li>
+            <label for="image">Фото артикула</label>
+            <input type="file" name="image" id="image"
+                   value=""/>
+        </li>
+
+
         <li>
             <label for="categoryId">Категорія</label>
             <select name="categoryId">

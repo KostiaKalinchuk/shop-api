@@ -6,7 +6,6 @@ define( "DB_USERNAME", "root" );
 define( "DB_PASSWORD", "" );
 define( "CLASS_PATH", "models" );
 define( "TEMPLATE_PATH", "views" );
-//define( "HOMEPAGE_NUM_ARTICLES", 5 );
 define( "ADMIN_USERNAME", "Kostia" );
 define( "ADMIN_PASSWORD", "12345" );
 require( CLASS_PATH . "./Article.php" );

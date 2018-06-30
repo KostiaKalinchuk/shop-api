@@ -9,9 +9,7 @@ if ($http_origin == "http://localhost:3000") {
 }
 
 // подключаемся к серверу
-$link = mysqli_connect($host, $user, $password, $database)
-or die("Ошибка " . mysqli_error($link));
-
+$link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
 
 // выполняем операции с базой данных
 $sql = "SELECT * FROM Categories";

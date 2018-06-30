@@ -14,7 +14,7 @@ or die("Ошибка " . mysqli_error($link));
 
 
 // выполняем операции с базой данных
-$sql = "SELECT * FROM Phones LIMIT 10 OFFSET 0";
+$sql = "SELECT * FROM Phones LIMIT 20 OFFSET 0";
 $result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
 $eee='http://shop-api.local';
 while ($row = mysqli_fetch_array($result)) {

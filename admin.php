@@ -165,7 +165,7 @@ function listArticles() {
   $data = Category::getList();
   $results['categories'] = array();
   foreach ( $data['results'] as $category ) $results['categories'][$category->id] = $category;
-  $results['pageTitle'] = "Всі арикули";
+  $results['pageTitle'] = "Артикули";
 
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Помилка: артикул не знайдено.";

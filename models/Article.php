@@ -36,6 +36,8 @@ class Article
   public $audio = null;
   public $video = null;
 
+  public $image = null;
+
   /**
   * Sets the object's properties using the values in the supplied array
   *
@@ -62,6 +64,8 @@ class Article
     if ( isset( $data['navigation'] ) ) $this->navigation = $data['navigation'];
     if ( isset( $data['audio'] ) ) $this->audio = $data['audio'];
     if ( isset( $data['video'] ) ) $this->video = $data['video'];
+
+    if ( isset( $data['image'] ) ) $this->image = $data['image'];
   }
 
 
@@ -134,15 +138,27 @@ class Article
   public function insert() {
 
     // Does the Article object already have an ID?
-    if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
+//    if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
+
+
+
+      $full = 'http://shop-api.local/';
+      $path = 'images/'; // директория для загрузки
+      $ext = array_pop(explode('.',$_FILES['image']['name'])); // расширение
+      $new_name = time().'.'.$ext; // новое имя с расширением
+      $full_path = $path.$new_name; // полный путь с новым именем и расширением
+
+      if($_FILES['image']['error'] == 0){
+          if(move_uploaded_file($_FILES['image']['tmp_name'], $full_path)){
+
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "INSERT INTO 
             Phones ( categoryId, name, description, price, cpu, camera, size, weight, 
-            display, battery, memory, color, system, connection, material, navigation, audio, video ) 
+            display, battery, memory, color, system, connection, material, navigation, audio, video, image ) 
             VALUES (:categoryId, :name, :description, :price, :cpu, :camera, :size, :weight, 
-            :display, :battery, :memory, :color, :system, :connection, :material, :navigation, :audio, :video )";
+            :display, :battery, :memory, :color, :system, :connection, :material, :navigation, :audio, :video, :image )";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":categoryId", $this->categoryId, PDO::PARAM_INT );
     $st->bindValue( ":name", $this->name, PDO::PARAM_STR );
@@ -162,9 +178,17 @@ class Article
     $st->bindValue( ":navigation", $this->navigation, PDO::PARAM_STR );
     $st->bindValue( ":audio", $this->audio, PDO::PARAM_STR );
     $st->bindValue( ":video", $this->video, PDO::PARAM_STR );
+
+    $st->bindValue( ":image", $full.$full_path, PDO::PARAM_STR );
+
     $st->execute();
     $this->id = $conn->lastInsertId();
     $conn = null;
+
+
+          }
+      }
+
   }
 
 
@@ -182,7 +206,7 @@ class Article
     $sql = "UPDATE Phones 
             SET categoryId=:categoryId, name=:name, description=:description, price=:price, cpu=:cpu, camera=:camera, 
             size=:size, weight=:weight, display=:display, battery=:battery, memory=:memory, color=:color, system=:system, 
-            connection=:connection, material:material, navigation=:navigation, audio=:audio, video=:video  
+            connection=:connection, material=:material, navigation=:navigation, audio=:audio, video=:video  
             WHERE id = :id";
     $st = $conn->prepare ( $sql );
 
@@ -206,6 +230,7 @@ class Article
     $st->bindValue( ":navigation", $this->navigation, PDO::PARAM_STR );
     $st->bindValue( ":audio", $this->audio, PDO::PARAM_STR );
     $st->bindValue( ":video", $this->video, PDO::PARAM_STR );
+    $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
 
     $st->execute();
     $conn = null;
