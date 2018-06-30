@@ -269,12 +269,12 @@ function deleteCategory() {
     return;
   }
 
-  $articles = Article::getList( 1000000, $category->id );
-
-  if ( $articles['totalRows'] > 0 ) {
-    header( "Location: admin.php?action=listCategories&error=categoryContainsArticles" );
-    return;
-  }
+//  $articles = Article::getList( 1000000, $category->id );
+//
+//  if ( $articles['totalRows'] > 0 ) {
+//    header( "Location: admin.php?action=listCategories&error=categoryContainsArticles" );
+//    return;
+//  }
 
   $category->delete();
   header( "Location: admin.php?action=listCategories&status=categoryDeleted" );

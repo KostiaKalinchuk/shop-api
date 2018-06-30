@@ -95,16 +95,11 @@
             <textarea name="description" id="description" required maxlength="1000"
                       style="height: 5em;"><?php echo htmlspecialchars($results['article']->description) ?></textarea>
         </li>
-
-
-
         <li>
             <label for="image">Фото артикула</label>
             <input type="file" name="image" id="image"
                    value=""/>
         </li>
-
-
         <li>
             <label for="categoryId">Категорія</label>
             <select name="categoryId">
@@ -115,7 +110,6 @@
             </select>
         </li>
     </ul>
-
     <div class="buttons">
         <input type="submit" name="saveChanges" value="Зберегти"/>
         <input type="submit" formnovalidate name="cancel" value="Відміна"/>

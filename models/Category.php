@@ -137,7 +137,7 @@ class Category
   public function delete() {
 
     // Does the Category object have an ID?
-    if ( is_null( $this->id ) ) trigger_error ( "Category::delete(): Attempt to delete a Category object that does not have its ID property set.", E_USER_ERROR );
+//    if ( is_null( $this->id ) ) trigger_error ( "Category::delete(): Attempt to delete a Category object that does not have its ID property set.", E_USER_ERROR );
 
     // Delete the Category
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );

@@ -35,7 +35,6 @@ class Article
   public $navigation = null;
   public $audio = null;
   public $video = null;
-
   public $image = null;
 
   /**
@@ -64,7 +63,6 @@ class Article
     if ( isset( $data['navigation'] ) ) $this->navigation = $data['navigation'];
     if ( isset( $data['audio'] ) ) $this->audio = $data['audio'];
     if ( isset( $data['video'] ) ) $this->video = $data['video'];
-
     if ( isset( $data['image'] ) ) $this->image = $data['image'];
   }
 
@@ -79,7 +77,6 @@ class Article
 
     $this->__construct( $params );
   }
-
 
   /**
   * Returns an Article object matching the given article ID
@@ -98,7 +95,6 @@ class Article
     $conn = null;
     if ( $row ) return new Article( $row );
   }
-
 
   /**
   * Returns all (or a range of) Article objects in the DB
@@ -141,16 +137,14 @@ class Article
 //    if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
 
 
-
       $full = 'http://shop-api.local/';
-      $path = 'images/'; // директория для загрузки
-      $ext = array_pop(explode('.',$_FILES['image']['name'])); // расширение
-      $new_name = time().'.'.$ext; // новое имя с расширением
-      $full_path = $path.$new_name; // полный путь с новым именем и расширением
+      $path = 'images/';
+      $ext = array_pop(explode('.',$_FILES['image']['name']));
+      $new_name = time().'.'.$ext;
+      $full_path = $path.$new_name;
 
       if($_FILES['image']['error'] == 0){
           if(move_uploaded_file($_FILES['image']['tmp_name'], $full_path)){
-
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
@@ -178,13 +172,10 @@ class Article
     $st->bindValue( ":navigation", $this->navigation, PDO::PARAM_STR );
     $st->bindValue( ":audio", $this->audio, PDO::PARAM_STR );
     $st->bindValue( ":video", $this->video, PDO::PARAM_STR );
-
     $st->bindValue( ":image", $full.$full_path, PDO::PARAM_STR );
-
     $st->execute();
     $this->id = $conn->lastInsertId();
     $conn = null;
-
 
           }
       }
@@ -199,14 +190,23 @@ class Article
   public function update() {
 
     // Does the Article object have an ID?
-    if ( is_null( $this->id ) ) trigger_error ( "Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR );
+//    if ( is_null( $this->id ) ) trigger_error ( "Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR );
 
-    // Update the Article  НЕПРАЦЮЄ!!!!!!!!
+      $full = 'http://shop-api.local/';
+      $path = 'images/';
+      $ext = array_pop(explode('.',$_FILES['image']['name']));
+      $new_name = time().'.'.$ext;
+      $full_path = $path.$new_name;
+
+      if($_FILES['image']['error'] == 0){
+          if(move_uploaded_file($_FILES['image']['tmp_name'], $full_path)){
+
+    // Update the Article  done!!!!!!!!
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "UPDATE Phones 
             SET categoryId=:categoryId, name=:name, description=:description, price=:price, cpu=:cpu, camera=:camera, 
             size=:size, weight=:weight, display=:display, battery=:battery, memory=:memory, color=:color, system=:system, 
-            connection=:connection, material=:material, navigation=:navigation, audio=:audio, video=:video  
+            connection=:connection, material=:material, navigation=:navigation, audio=:audio, video=:video, image=:image  
             WHERE id = :id";
     $st = $conn->prepare ( $sql );
 
@@ -214,8 +214,6 @@ class Article
     $st->bindValue( ":name", $this->name, PDO::PARAM_STR );
     $st->bindValue( ":description", $this->description, PDO::PARAM_STR );
     $st->bindValue( ":price", $this->price, PDO::PARAM_INT );
-
-
     $st->bindValue( ":cpu", $this->cpu, PDO::PARAM_STR );
     $st->bindValue( ":camera", $this->camera, PDO::PARAM_STR );
     $st->bindValue( ":size", $this->size, PDO::PARAM_STR );
@@ -231,9 +229,11 @@ class Article
     $st->bindValue( ":audio", $this->audio, PDO::PARAM_STR );
     $st->bindValue( ":video", $this->video, PDO::PARAM_STR );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
-
+    $st->bindValue( ":image", $full.$full_path, PDO::PARAM_STR );
     $st->execute();
     $conn = null;
+          }
+      }
   }
 
 
@@ -253,7 +253,6 @@ class Article
     $st->execute();
     $conn = null;
   }
-
 }
 
 
