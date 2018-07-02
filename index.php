@@ -1,7 +1,7 @@
 <?php
 
 require("admin.php");
-//require("API/index.php");
+//require("API/categories.php");
 //require("API/phones.php");
 
 ?>
