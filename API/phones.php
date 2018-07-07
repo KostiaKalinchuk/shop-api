@@ -20,7 +20,7 @@ or die("Ошибка " . mysqli_error($link));
 
 
 // выполняем операции с базой данных
-$sql = "SELECT * FROM Phones LIMIT 1 OFFSET $offset";
+$sql = "SELECT * FROM Phones LIMIT 3 OFFSET $offset";
 $result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
 
 while ($row = mysqli_fetch_array($result)) {
