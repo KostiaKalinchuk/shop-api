@@ -9,7 +9,9 @@ define( "TEMPLATE_PATH", "views" );
 define( "ADMIN_USERNAME", "Kostia" );
 define( "ADMIN_PASSWORD", "12345" );
 require( CLASS_PATH . "./Article.php" );
-require( CLASS_PATH . "./Category.php" );
+require(CLASS_PATH . "./Category.php");
+require(CLASS_PATH . "./Comment.php");
+require(CLASS_PATH . "./Order.php");
 
 function handleException( $exception ) {
   echo "Виникла помилка. Спробуйте пізніше.";

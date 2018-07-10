@@ -38,6 +38,12 @@ switch ( $action ) {
   case 'deleteCategory':
     deleteCategory();
     break;
+    case 'comments':
+    comments();
+    break;
+    case 'orders':
+    orders();
+    break;
   default:
     listArticles();
 }
@@ -50,35 +56,28 @@ function login() {
 
   if ( isset( $_POST['login'] ) ) {
 
-    // User has posted the login form: attempt to log the user in
-
     if ( $_POST['username'] == ADMIN_USERNAME && $_POST['password'] == ADMIN_PASSWORD ) {
 
-      // Login successful: Create a session and redirect to the admin homepage
       $_SESSION['username'] = ADMIN_USERNAME;
       header( "Location: admin.php" );
 
     } else {
 
-      // Login failed: display an error message to the user
       $results['errorMessage'] = "Неправильно введений логін чи пароль. Спробуйте ще раз.";
       require( TEMPLATE_PATH . "/admin/loginForm.php" );
     }
 
   } else {
 
-    // User has not posted the login form yet: display the form
     require( TEMPLATE_PATH . "/admin/loginForm.php" );
   }
 
 }
 
-
 function logout() {
   unset( $_SESSION['username'] );
   header( "Location: admin.php" );
 }
-
 
 function newArticle() {
 
@@ -88,7 +87,6 @@ function newArticle() {
 
   if ( isset( $_POST['saveChanges'] ) ) {
 
-    // User has posted the article edit form: save the new article
     $article = new Article;
     $article->storeFormValues( $_POST );
     $article->insert();
@@ -96,11 +94,9 @@ function newArticle() {
 
   } elseif ( isset( $_POST['cancel'] ) ) {
 
-    // User has cancelled their edits: return to the article list
     header( "Location: admin.php" );
   } else {
 
-    // User has not posted the article edit form yet: display the form
     $results['article'] = new Article;
     $data = Category::getList();
     $results['categories'] = $data['results'];
@@ -109,7 +105,6 @@ function newArticle() {
 
 }
 
-
 function editArticle() {
 
   $results = array();
@@ -117,8 +112,6 @@ function editArticle() {
   $results['formAction'] = "editArticle";
 
   if ( isset( $_POST['saveChanges'] ) ) {
-
-    // User has posted the article edit form: save the article changes
 
     if ( !$article = Article::getById( (int)$_POST['articleId'] ) ) {
       header( "Location: admin.php?error=articleNotFound" );
@@ -131,11 +124,9 @@ function editArticle() {
 
   } elseif ( isset( $_POST['cancel'] ) ) {
 
-    // User has cancelled their edits: return to the article list
     header( "Location: admin.php" );
   } else {
 
-    // User has not posted the article edit form yet: display the form
     $results['article'] = Article::getById( (int)$_GET['articleId'] );
     $data = Category::getList();
     $results['categories'] = $data['results'];
@@ -143,7 +134,6 @@ function editArticle() {
   }
 
 }
-
 
 function deleteArticle() {
 
@@ -155,7 +145,6 @@ function deleteArticle() {
   $article->delete();
   header( "Location: admin.php?status=articleDeleted" );
 }
-
 
 function listArticles() {
   $results = array();
@@ -200,6 +189,25 @@ function listCategories() {
   require( TEMPLATE_PATH . "/admin/listCategories.php" );
 }
 
+function comments() {
+    $results = array();
+    $data = Comment::getList();
+    $results['comments'] = $data['results'];
+    $results['totalRows'] = $data['totalRows'];
+    $results['pageTitle'] = "Коментарі";
+
+    require( TEMPLATE_PATH . "/admin/comments.php" );
+}
+
+function orders() {
+    $results = array();
+    $data = Order::getList();
+    $results['orders'] = $data['results'];
+    $results['totalRows'] = $data['totalRows'];
+    $results['pageTitle'] = "Замовлення";
+
+    require( TEMPLATE_PATH . "/admin/orders.php" );
+}
 
 function newCategory() {
 
@@ -209,7 +217,6 @@ function newCategory() {
 
   if ( isset( $_POST['saveChanges'] ) ) {
 
-    // User has posted the category edit form: save the new category
     $category = new Category;
     $category->storeFormValues( $_POST );
     $category->insert();
@@ -217,17 +224,14 @@ function newCategory() {
 
   } elseif ( isset( $_POST['cancel'] ) ) {
 
-    // User has cancelled their edits: return to the category list
     header( "Location: admin.php?action=listCategories" );
   } else {
 
-    // User has not posted the category edit form yet: display the form
-    $results['category'] = new Category;
+    $results['Category'] = new Category;
     require( TEMPLATE_PATH . "/admin/editCategory.php" );
   }
 
 }
-
 
 function editCategory() {
 
@@ -236,8 +240,6 @@ function editCategory() {
   $results['formAction'] = "editCategory";
 
   if ( isset( $_POST['saveChanges'] ) ) {
-
-    // User has posted the category edit form: save the category changes
 
     if ( !$category = Category::getById( (int)$_POST['categoryId'] ) ) {
       header( "Location: admin.php?action=listCategories&error=categoryNotFound" );
@@ -250,17 +252,13 @@ function editCategory() {
 
   } elseif ( isset( $_POST['cancel'] ) ) {
 
-    // User has cancelled their edits: return to the category list
     header( "Location: admin.php?action=listCategories" );
   } else {
 
-    // User has not posted the category edit form yet: display the form
-    $results['category'] = Category::getById( (int)$_GET['categoryId'] );
+    $results['Category'] = Category::getById( (int)$_GET['categoryId'] );
     require( TEMPLATE_PATH . "/admin/editCategory.php" );
   }
-
 }
-
 
 function deleteCategory() {
 
@@ -269,15 +267,8 @@ function deleteCategory() {
     return;
   }
 
-//  $articles = Article::getList( 1000000, $category->id );
-//
-//  if ( $articles['totalRows'] > 0 ) {
-//    header( "Location: admin.php?action=listCategories&error=categoryContainsArticles" );
-//    return;
-//  }
-
   $category->delete();
   header( "Location: admin.php?action=listCategories&status=categoryDeleted" );
 }
 
-?>
+
