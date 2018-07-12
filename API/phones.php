@@ -14,13 +14,21 @@ if(!isset($_GET['offset'])) {
     $offset = $_GET['offset'];
 }
 
+
+if(!isset($_GET['limit'])) {
+    $limit = 3;
+}else{
+    $limit = $_GET['limit'];
+}
+
+
 // подключаемся к серверу
 $link = mysqli_connect($host, $user, $password, $database)
 or die("Ошибка " . mysqli_error($link));
 
 
 // выполняем операции с базой данных
-$sql = "SELECT * FROM Phones LIMIT 3 OFFSET $offset";
+$sql = "SELECT * FROM Phones LIMIT $limit OFFSET $offset";
 $result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
 
 while ($row = mysqli_fetch_array($result)) {
