@@ -6,13 +6,9 @@ class Order
     // Properties
 
     public $id = null;
-
     public $name = null;
-
     public $price = null;
-
     public $count = null;
-
 
     public function __construct($data = array())
     {
@@ -24,8 +20,6 @@ class Order
 
     public function storeFormValues($params)
     {
-
-        // Store all the parameters
         $this->__construct($params);
     }
 
@@ -65,7 +59,6 @@ class Order
         $conn = null;
         return (array("results" => $list, "totalRows" => $totalRows[0]));
     }
-
 }
 
 

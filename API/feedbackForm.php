@@ -12,7 +12,6 @@ $name = $obj['name'];
 $email = $obj['email'];
 $message = $obj['message'];
 
-//// подключаемся к серверу
 $link = mysqli_connect($host, $user, $password, $database)
 or die("Ошибка " . mysqli_error($link));
 

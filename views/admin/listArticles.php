@@ -38,10 +38,10 @@
             <td>
                 <?php echo $results['categories'][$article->categoryId]->name ?>
             <td>
-                <?php echo $article->name ?></td>
+                <?php echo $article->name ?>
             </td>
             <td>
-                <?php echo $article->cpu ?></td>
+                <?php echo $article->cpu ?>
             </td>
             <td>
                 <?php echo $article->price ?>
@@ -86,7 +86,7 @@
                 <?php echo $article->video ?>
             </td>
             <td>
-                <?php echo $article->description ?></td>
+                <?php echo $article->description ?>
             </td>
         </tr>
 

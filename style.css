@@ -17,37 +17,6 @@ body {
   border-radius: 5px;
 }
 
-/*#cont {*/
-  /*width: 500px;*/
-  /*background: #e1e7e8;*/
-  /*margin-left: 40px;*/
-  /*padding: 20px;*/
-  /*-moz-border-radius: 5px;*/
-  /*-webkit-border-radius: 5px;*/
-  /*border-radius: 5px;*/
-  /*display: inline-block;*/
-/*}*/
-
-/*.left {*/
-  /*width: 200px;*/
-  /*background: #e1e7e8;*/
-  /*padding: 20px;*/
-  /*-moz-border-radius: 5px;*/
-  /*-webkit-border-radius: 5px;*/
-  /*border-radius: 5px;*/
-  /*float: left;*/
-/*}*/
-
-/*.right {*/
-  /*width: 200px;*/
-  /*background: #e1e7e8;*/
-  /*padding: 20px;*/
-  /*-moz-border-radius: 5px;*/
-  /*-webkit-border-radius: 5px;*/
-  /*border-radius: 5px;*/
-/*float: right;*/
-/*}*/
-
  /*The footer*/
 
 #footer {
@@ -56,7 +25,6 @@ body {
   padding: 20px 0 0 0;
   font-size: .8em;
 }
-
 
 /* Headings */
 
@@ -78,7 +46,6 @@ h3.categoryDescription {
   margin-top: -20px;
   margin-bottom: 40px;
 }
-
 
 /* Article headlines */
 
@@ -161,7 +128,6 @@ form {
   box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
 }
 
-
 /* Give form elements consistent margin, padding and line height */
 
 form ul {
@@ -179,7 +145,6 @@ form * {
   line-height: 1em;
 }
 
-
 /* The field labels */
 
 label {
@@ -191,7 +156,6 @@ label {
   padding: .4em 0 0 0;
   margin: .15em .5em 0 0;
 }
-
 
 /* The fields */
 
@@ -232,7 +196,6 @@ textarea#content {
   font-family: "Courier New", courier, fixed;
 }
 
-
 /* Place a border around focused fields */
 
 form *:focus {
@@ -240,13 +203,11 @@ form *:focus {
   outline: none;
 }
 
-
 /* Display correctly filled-in fields with a green background */
 
 input:valid, textarea:valid {
   background: #efe;
 }
-
 
 /* Submit buttons */
 
@@ -286,7 +247,6 @@ input[type="submit"]:active {
   box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
 }
 
-
 /* Tables */
 
 table {
@@ -325,7 +285,6 @@ tr:hover {
   background: #ddd;
   cursor: pointer;
 }
-
 
 /* Status and error boxes */
 

@@ -10,7 +10,7 @@ $obj = json_decode($json, true);
 
 $name = $obj[0]['name'];
 $count = $obj[0]['count'];
-$price = $obj[0]['price']*$count;
+$price = $obj[0]['price'] * $count;
 
 $link = mysqli_connect($host, $user, $password, $database)
 or die("Ошибка " . mysqli_error($link));

@@ -102,7 +102,6 @@ function newArticle() {
     $results['categories'] = $data['results'];
     require( TEMPLATE_PATH . "/admin/editArticle.php" );
   }
-
 }
 
 function editArticle() {
@@ -132,7 +131,6 @@ function editArticle() {
     $results['categories'] = $data['results'];
     require( TEMPLATE_PATH . "/admin/editArticle.php" );
   }
-
 }
 
 function deleteArticle() {
@@ -194,7 +192,7 @@ function comments() {
     $data = Comment::getList();
     $results['comments'] = $data['results'];
     $results['totalRows'] = $data['totalRows'];
-    $results['pageTitle'] = "Коментарі";
+    $results['pageTitle'] = "Повідомлення";
 
     require( TEMPLATE_PATH . "/admin/comments.php" );
 }
